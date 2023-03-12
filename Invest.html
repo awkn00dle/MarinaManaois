@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Investments Analysis - Marina Manaois</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Hyperspace</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="Invest.html" class="active">Queries</a></li>
+						<li><a href="https://github.com/awkn00dle/SQLInvestmentAnalysis" target="_blank" > Files</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Investments Analysis</h1>
+							<blockquote>The following tasks were given by Refocus. I was a data analyst working for a company planning to venture
+								into a new market involving financial services. In line with this,
+								it is requesting insights on sources of financing companies tap
+								into when entering the said industry. 
+								
+								Decision-makers will use insights from the report created
+								for their alternatives analysis as they explore probable
+								sources of financing to start offering the new service.
+								<p></p>
+								dataset: investment_subset.csv
+								</blockquote>
+							<h3>Data Preparation</h3>
+							<p>I first created a new table that has a new column called ‘market_FS’ 
+								for market with only Financial Services and another column called ‘country’ based on country code.</p>
+							<pre><code>create table investment_subset_backup as
+select *,
+case
+	when market='FincialServices' then 'Financial Services' 
+	end as market_FS,
+case 
+	when country_code = 'USA' then 'United States of America'
+	when country_code = 'RUS' then 'Russia'
+	when country_code = 'ESP' then 'Spain'
+	when country_code = 'IND' then 'India'
+	when country_code = 'SGP' then 'Singapore'
+	when country_code = 'LVA' then 'Latvia'
+	when country_code = 'BWA' then 'Botswana'
+	when country_code = 'CHN' then 'China'
+	when country_code = 'GBR' then 'United Kingdom'
+	when country_code = 'JPN' then 'Japan'
+	when country_code = 'DUE' then 'Germany'
+	when country_code = 'FRA' then 'France'
+	when country_code = 'CAN' then 'Canada'
+	when country_code = 'POL' then 'Poland'
+	when country_code = 'HKG' then 'Hong Kong'
+	when country_code = 'ARG' then 'Argentina'
+	when country_code = 'ITA' then 'Italy'
+	when country_code = 'CHE' then 'Switzerland'
+	when country_code = 'LTU' then 'Lithuania'
+	when country_code = 'BRA' then 'Brazil'
+	end as country
+from investment_subset</code></pre>
+							<p>I deleted market column from new table.</p>
+							<pre><code>ALTER TABLE investment_subset_backup
+DROP COLUMN market</code></pre>
+							<p>I deleted rows of new table where market_FS is null.</p>
+							<pre><code>delete from investment_subset_backup
+where market_FS is null</code></pre>
+							<p>I deleted rows that have under null funding_total_usd.</p>
+							<pre><code>delete from investment_subset_backup
+where funding_total_usd is null</code></pre>
+							<p>Finally, I deleted rows that have under null funding_total_usd.</p>
+							<pre><code>UPDATE investment_subset_backup
+SET status='unknown'
+WHERE status IS NULL; 
+
+UPDATE investment_subset_backup
+SET country_code='unknown'
+WHERE country_code is NULL
+
+UPDATE investment_subset_backup
+SET country = 'unknown'
+where country is NULL</code></pre>
+							<p></p>
+							<p></p>
+							<hr />
+							<h3>Descriptive Analysis</h3>
+							<p>With the data prepared, I wrote a query that gives me a descriptive analysis that presents the number of observations of
+								companies operating in financial services.</p>
+							<pre><code>SELECT round(AVG(seed),2) as avg_seed,MAX(seed) as max_seed,min(seed) as min_seed
+FROM investment_subset_backup
+</code></pre>
+							<h5>Output</h5>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-4"><span class="image fit"><img src="images/invest1.png" alt="" /></span></div>
+						</div>
+					</div>
+					<hr />
+					<h3>Data Exploration</h3>
+							<p>Aware of the reality that equity crowdfunding is a bit rare in financial services,
+								I had to determine whether or not there has been aprevious instance where a startup
+								offering financial services received equity crowdfunding. If there was, I  had to provide
+								details of the company such as the country it operates in, the year it was founded,
+								its status (whether or not it is still operating), and the amount of equity
+								crowdfunding it acquired.</p>
+							<pre><code>select country,founded_year,status,equity_crowdfunding
+from investment_subset_backup
+where equity_crowdfunding>0</code></pre>
+							<h5>Output</h5>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-6"><span class="image fit"><img src="images/invest2.png" alt="" /></span></div>
+						</div>
+					</div>
+					<hr />
+					<h3>Outliers</h3>
+					<p>I had to determine whether or not a significant outlier in terms of total funding (USD)
+						exists among companies that offer financial services. If there was, I had to provide details pertaining to this outlier such as its country,
+						status, year founded, and total funding (USD).</p>
+					<pre><code>Select * 
+from investment_subset_backup
+where funding_total_usd is not null
+Order by funding_total_usd desc</code></pre>
+						<pre><code>Select country,founded_year,status,funding_total_usd
+from investment_subset_backup
+where funding_total_usd is not null
+And funding_total_usd>110000000
+</code></pre>
+					<h5>Output</h5>
+					<div class="box alt">
+						<div class="row gtr-uniform">
+					<div class="col-6"><span class="image fit"><img src="images/invest3.png" alt="" /></span></div>
+				</div>
+			</div>
+			<hr />
+			<h3>Data Visualization</h3>
+			<p>For presenting data, I had to first excluding the significant outlier from the dataset. 
+				The visualization would need to provide insights on the company in terms of the
+				usual financing sources for businesses that offer financial services. This was done by exporting the
+				data from SQL to MS Excel to utilize the necessary graphs that would present the
+				average funds acquired from financing sources such as equity crowdsourcing,
+					undisclosed sources, convertible notes, debt financing, and private equity.</p>
+					<pre><code>delete from investment_subset_backup 
+where funding_total_usd = 725000000</code></pre>
+					<h5>Output</h5>
+					<div class="box alt">
+						<div class="row gtr-uniform">
+					<div class="col-5"><span class="image fit"><img src="images/invest4.png" alt="" /></span></div>
+				</div>
+			</div>
+				<h5>Conclusion</h5>
+				<p>According to the graph above, we can see that the average funds from 
+					equity crowdfunding exceeds more than half the average acquired funds from other financial sources. 
+					We can say that for start-up companies under Financial Services
+					have been getting their funding mostly from equity crowdfunding than other means.</p>
+						</div>
+					</div>
+							</code>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

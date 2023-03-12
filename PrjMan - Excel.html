@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Project Management Report - Marina Manaois</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="title">Hyperspace</a>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="PrjMan - Excel.html" class="active">Project</a></li>
+				<li><a href="https://github.com/awkn00dle/ProjectManagementReport" target="_blank">Files</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="inner">
+				<h1 class="major">Project Management Status Report</h1>
+				<blockquote>This is a Personal Project to exercise my knowledge and skills in advanced Excel. This
+					project management report comprises of an interactive dashboard offers essential metrics,
+					upcoming activities, KPIs, and a Gantt chart, facilitating easy task management and providing
+					insights into individual contributions. Moreover, tmarnahhhe information
+					in this project is dummy data and are used solely to showcase a sample of the report.</p></blockquote>
+					<p></p>
+				<span class="image fit"><img src="images/prjman.png" alt="" /></span>
+				<h2>Excel Interactive Dashboard</h2>
+				<p>This project management report created in Excel features an interactive dashboard with four distinct
+					components. The first part includes a set of number tiles
+					that display essential project metrics at a glance. The second part is a table that shows the
+					upcoming activities and pending issues for each project,
+					allowing users to easily stay on top of their tasks. The third component is a KPI table that
+					showcases the performance of each project member,
+					providing valuable insights into individual contributions. The final part is a project status Gantt
+					chart that offers an overview of each project's progress.
+					The interactive nature of the dashboard is enhanced by its ability to toggle between a list of
+					upcoming activities or issues and a slicer for choosing the progress of each
+					project team. This dashboard offers an accessible and user-friendly way to track the status of
+					projects and make informed decisions.</p>
+				<h2>Methodology</h2>
+				<h3>Pivot Table</h3>
+				<span class="image fit"><img src="images/prjman-piv.png" alt="" /></span>
+				<p>Created a pivot table that involved connecting the "teams" and "activities" reference tables through
+					the "persons" column.
+					Start and end dates were added as minimum and maximum values,
+					and the "category" and "activities" columns were included to categorize the results.
+					The end result was a table that displayed activity numbers, individual start and end dates, and
+					categories.</p>
+				<h3>Gantt Chart</h3>
+				<span class="image fit"><img src="images/prjman-gant.png" alt="" /></span>
+				<p>To create the Gantt chart, the prepared pivot table was linked to a vertical axis on a separate
+					sheet.
+					Progress percentages were converted to progress bars using conditional formatting,
+					and a timeline calendar was created as a horizontal axis. Formulas were used to determine whether
+					activities were ongoing,
+					with true cells colored light orange and false cells left blank. Finally, conditional formatting was
+					used to highlight today's date on the timeline.
+					The resulting chart provides an overview of each activity's completion status and whether projects
+					are on schedule.</p>
+				<h3>Progress Charts</h3>
+				<h4>Upcoming Chart</h4>
+				<span class="image fit"><img src="images/prjman-upc.png" alt="" /></span>
+				<p>To create the "Upcoming Chart", two tables were first created for the top 10 ongoing activities and
+					top 10 pending issues on the calculations sheet.
+					These tables were then used to generate a dashboard display table that could switch between the list
+					of activities and issues based on user selection through a drop-down menu.
+					The drop-down selection was created with input and cell link in developer mode.</p>
+				<blockquote>These were the formulas used:
+					<li>Upcoming Activities:
+						<code>=INDEX(FILTER(Activities,Activities[Start Date]>today.date),SEQUENCE(10),{1,2,4})</code>
+					</li>
+					<li>Pending Issues:
+						<code>=INDEX(FILTER(Issue,Issue[Date opened]>today.date),SEQUENCE(10),{1,2,4})</code></li>
+					<li>Dashboard Table:
+						<code>=INDEX(FILTER(Issue,Issue[Date opened]>today.date),SEQUENCE(10),{1,2,4})</code></li>
+				</blockquote>
+				<h4>People Chart</h4>
+				<span class="image fit"><img src="images/prjman-ppl.png" alt="" /></span>
+				<p>To create "People Chart", the linking of the "Activity" and "People" tables was made by using the
+					relationship option.
+					A pivot table was created to count "Assigned To" for activities and "Owner" for issues.
+					Data bars were added via conditional formatting, and the table was copied to the dashboard.</p>
+				<h3>Dashboard with Filters</h3>
+				<span class="image fit"><img src="images/prjman-slcr.png" alt="" /></span>
+				<p>To create an interactive dashboard, two filters were added: a drop-down for the Upcoming Chart and a
+					slicer for the Gantt Chart.
+					A combo box was inserted using the developer's tab and linked to a calculation sheet with the two
+					drop-down options.
+					This method allows for dynamic and user-friendly data exploration.</p>
+				<p>To create a slicer for the Gantt Chart, the pivot table field was opened, and the team table was
+					selected and added as a slicer by right-clicking.
+					The slicer was then linked to the dashboard,
+					allowing for easy filtering of the Gantt Chart.</p>
+				<h3>Dashboard with Number Cards</h3>
+				<span class="image fit"><img src="images/prjman-crds.png" alt="" /></span>
+				<p>Creating number cards for a dashboard involves setting up a new table in the calculations sheet with
+					formulas to calculate days left for projects, pending activities, and issues.
+					Cards were designed, labeled,
+					and linked to the table's values, including today's date.</p>
+				<blockquote>These were the formulas used:
+					<li>Days Left: <code>=MAX(Activities[End Date]-today.date)</code></li>
+					<li>Activities Pending:
+						<code>=COUNTIFS(Activities[Start Date],"<="&today.date,Activities[% Done],"<1")</code></li>
+					<li>Issues Pending: <code>=COUNTIFS(Issue[Date Closed],"")</code></li>
+				</blockquote>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer" class="wrapper alt">
+		<div class="inner">
+			<ul class="menu">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

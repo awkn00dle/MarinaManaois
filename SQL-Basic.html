@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Basic SQL - Marina Manaois</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Hyperspace</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="SQL-Basic.html" class="active">Basic</a></li>
+						<li><a href="SQL-Int.html">Intermediate</a></li>
+						<li><a href="SQL-Adv.html">Advanced</a></li>
+						<li><a href="https://github.com/awkn00dle/SQLTasks/tree/ea8eb47f7bd4add3edcac291122708a37a4d8969" target="_blank" > Files</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Basic SQL Queries</h1>
+							<blockquote>The following tasks were given by Refocus. As a data analyst in a DVD rental store, I was given a database 
+							that can be opened and used in PgAdmin to extract, clean and process data. Instructions were sent to me from sales and operations to identify patterns such as 
+							popular genres, peak rental times, and late returns. The following tasks require basic SQL skills, problem-solving, and communication skills.
+							<p></p>file: dvdrental.tar</blockquote>
+							
+							<h3>Task 1</h3>
+							<p>Manager asked for the titles and the length of films that start with the letters “S”
+								and “T” and have a replacement rate of 15.99 to 20.99. They only needed
+								the first 20 rows starting from the films with the longest running
+								time.</p>
+							<p></p>
+							<h5>Query</h5>
+								<pre><code>SELECT title,replacement_cost FROM film
+WHERE replacement_cost BETWEEN 15.99 and 20.99
+AND title LIKE 'S%'
+OR title LIKE 'T%'</code></pre>
+							<h5>Output</h5>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-4"><span class="image fit"><img src="images/bsc1.png" alt="" /></span></div>
+						</div>
+					</div>
+					<hr />
+<p></p>
+<p></p>
+							<h3>Task 2</h3>
+							<p>Manager asked for the IDs and the titles of films with a running time of less than
+								100 minutes and replacement costs greater than 15.99. They only needes
+								the films with ratings G, PG and PG-13. The output should be
+								ordered by title in ascending order</p>
+							<p></p>
+							<h5>Query</h5>
+	<pre><code>SELECT film_id,title FROM film
+WHERE length < 100
+AND replacement_cost BETWEEN 15.99 and 20.99
+AND rating IN ('G','PG','PG-13')</code></pre>
+							<h5>Output</h5>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-4"><span class="image fit"><img src="images/bsc2.png" alt="" /></span></div>
+						</div>
+					</div>
+							<hr />
+<p></p>
+<p></p>
+							<h3>Task 3</h3>
+							<p>A fellow data analyst couldn't understand how the following SQL queries were not working in the database. 
+							I was asked to provide a brief explanation and the corrected syntax.</p>
+							<pre><code>-----Query 1
+SELECT * FROM film
+WHERE rating = G</code></pre>
+							<pre><code>-----Query 2
+SELECT customer_id FROM film
+</code></pre>
+							<h5>Comments & Syntax</h5>
+							<p>When sorting a table with a certain value/info, 
+								we need to add apostrophes surrounding the value 
+								to ensure that the query can be read. The correct syntax is the following:</p>
+							<pre><code>-----Corrected Query 1
+SELECT * FROM film
+WHERE rating = 'G'</code></pre>
+							<p>There is an error due to the incorrect name of column. 
+							Customer_id is not found from the film table, however,
+							what can be used is the film_id column since it’s found in that table.</p>
+							<pre><code>-----Corrected Query 2
+SELECT film_id FROM film</code></pre>
+							<hr />
+<p></p>
+<p></p>
+							<h3>Task 4</h3>
+							<p> There was a discrepancy with a financial report wherein the
+							payment transactions for a customer with customer id # 514 was
+							missing. I was instructed to provide the customer's payment transactions.</p>
+							
+							<h5>Query</h5>
+							<pre><code>SELECT amount FROM payment
+WHERE customer_id=514</code></pre>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-4"><span class="image fit"><img src="images/bsc3.png" alt="" /></span></div>
+						</div>
+					</div>
+<hr />
+<p></p>
+<p></p>
+
+							<h3>Task 5</h3>
+							<p>The regulations officer asked from me to provide the number of R Rated films the DVD rental have from the regular media audit.
+							</p>
+							<h5>Query</h5>
+							<pre><code>SELECT COUNT(rating) FROM film
+WHERE rating='R'</code></pre>
+							<h5>Output</h5>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-2"><span class="image fit"><img src="images/bsc4.png" alt="" /></span></div>
+						</div>
+					</div>
+							</code>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

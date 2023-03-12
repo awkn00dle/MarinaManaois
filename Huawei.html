@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Google Play Data Visualization - Marina Manaois</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="title">Marina Manaois</a>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="Huawei.html" class="active">Project</a></li>
+				<li><a href="https://github.com/awkn00dle/Huawei-GPlayDataVisualization" target="_blank">Files</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="inner">
+				<h1 class="major">Huawei-Google Play Data Visualization</h1>
+				<blockquote>This is a Refocus Task. I was a data analyst working at Huawei, specifically in the
+					AppGallery vertical. My manager has
+					an important business review coming up soon and is tying a presentation together.
+					He wanted me to make a report in Power BI out of Google’s Play Store dataset (which
+					is sent to me via email). He’s looking to use this report during his business review
+					to find and talk through competitor insights together with the leadership team
+					that’s attending. </blockquote>
+				<span class="image fit"><img src="images/hwei.png" alt="" /></span>
+				<p></p>
+				<p></p>
+				<h2>Power BI Dashboard</h2>
+				<p>This dashboard presents key metrics, including the total number of apps, total number
+					of installs, the average review rating, and the total number of installs from free and paid apps
+					separately. These metrics are
+					displayed in number cards that dynamically adjust as users interact with the other graphs and
+					filters. The graphs goes deeper into the analysis by showcasing details about reviews, rating,
+					price, and apps by
+					app size. Additionally, a timeline shows the total number of
+					apps last updated over the period of analysis,
+					which can be further filtered by date slicer.</p>
+				<h2>Methodology</h2>
+				<h3>Dataset Review</h3>
+				<span class="image fit"><img src="images/hwei1.png" alt="" /></span>
+				<p>Upon reviewing the dataset in Excel, I have determined the necessary metrics for the analysis.
+					Utilizing the "app" column, I generated a "AppCount" metric, while the last update dates will
+					form the basis of a timeseries graph. In order to focus solely on the information related to
+					installs, reviews, and price, I excluded irrelevant columns such as
+					"Current Version" and "Andrioid Version". Additionally, I have identified somee
+					filters to be incorporated into the dashboard, including "App" and "Category" selection option,
+					"Free" and "Paid" selection option,
+					and, finally, a Date filter.</p>
+				<h3>Data Processing</h3>
+				<span class="image fit"><img src="images/hwei2 (2).png" alt="" /></span>
+				<p>From there, the dataset was imported into Power BI and was transformed for data processing or
+					cleaning. This includes simple tasks such as removing duplicates, removing unnecessary columns,
+					replacing blank values as "No Data", and creating buckets.</p>
+				<h3>Data Modeling</h3>
+				<div class="box alt">
+					<div class="row gtr-uniform">
+						<div class="col-8"><span class="image fit"><img src="images/hwei8.png" alt="" /></span></div>
+					</div>
+					<p></p>
+					<p>For data modeling, a dimension table was created solely for the timeseries. These tables were
+						connected by "Last Updated" from the Fact table and "Date" from the newly made Dim Table.</p>
+					<p></p>
+					<h3>Dashboard Design</h3>
+					<p>Below shows the visual elements in Power BI and the fields assigned to them.</p>
+					<h4>Layout</h4>
+					<div class="box alt">
+						<div class="row gtr-uniform">
+							<div class="col-8"><span class="image fit"><img src="images/hwei2.png" alt="" /></span>
+							</div>
+						</div>
+						<p></p>
+						<h4>Graphs & Cards</h4>
+						<div class="box alt">
+							<div class="row gtr-uniform">
+								<div class="col-12"><span class="image fit"><img src="images/hwei4.png" alt="" /></span>
+								</div>
+							</div>
+							<p></p>
+							<h4>Filters</h4>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+									<div class="col-10"><span class="image fit"><img src="images/hwei5.png"
+												alt="" /></span></div>
+								</div>
+							</div>
+		</section>
+
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer" class="wrapper alt">
+		<div class="inner">
+			<ul class="menu">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

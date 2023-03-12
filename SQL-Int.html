@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Intermediate SQL - Marina Manaois</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Hyperspace</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="SQL-Basic.html">Basic</a></li>
+						<li><a href="SQL-Int.html" class="active">Intermediate</a></li>
+						<li><a href="SQL-Adv.html">Advanced</a></li>
+						<li><a href="https://github.com/awkn00dle/SQLTasks/tree/ea8eb47f7bd4add3edcac291122708a37a4d8969" target="_blank" >Files</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Intermediate SQL Queries</h1>
+							<blockquote>
+								<p>file: dvdrental.tar</p></blockquote>
+
+							<h3>Task 1</h3>
+							<p>Manager asked for an Excel sheet report of the total sum of payments made by
+								each customer in the payments table. Data would be presented in ascending order and 
+								four columns to be shown only (customer_id, first_name, last_name, and sum).</p>
+							<h5>Query</h5>
+							<pre><code>SELECT customer.customer_id,first_name,last_name, SUM(payment.amount)
+FROM customer
+JOIN payment
+ON customer.customer_id = payment.customer_id
+GROUP BY customer.customer_id
+ORDER BY customer_id
+</code></pre>
+							<h5>Output</h5>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-3"><span class="image fit"><img src="images/int1.png" alt="" /></span></div>
+						</div>
+					</div>
+					<hr />
+							<p></p>
+							<p></p>
+
+							<h3>Task 2</h3>
+							<p>Manager askeed for the SQL syntax and output of customer ids having an
+								average payment amount of less than 3.
+								</p>
+							<h5>Query</h5>
+							<pre><code>select customer.customer_id,first_name,last_name, avg(payment.amount)
+from customer
+join payment
+on customer.customer_id = payment.customer_id
+group by customer.customer_id
+having avg(amount)<3
+order by customer_id </code></pre>
+							<h5>Output</h5>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-5"><span class="image fit"><img src="images/int2_org.png" alt="" /></span></div>
+						</div>
+					</div>
+					<hr />
+							<p></p>
+							<p></p>
+
+							<h3>Task 3</h3>
+							<p>A fellow data analyst couldn't understand how the following SQL queries were not working 
+								in the database.
+								I was asked to provide a brief explanation and the corrected syntax.</p>
+							<pre><code>-----Query 1
+SELECT first_name,last_name,district FROM customer
+INNER JOIN address
+ON address_id = address_id</code></pre>
+							<pre><code>-----Query 2
+SELECT customer_id,SUM(amount) FROM payment
+GROUP BY customer_id
+HAVING amount > 100</code></pre>
+							<h5>Comments & Syntax</h5>
+							<p>When citing the same column from both tables (in this case address_id), 
+								we need to include the table names and add a period (.) 
+								before the column name (ex. customer.address_id=address.address_id)</p>
+							<pre><code>-----Corrected Query 1
+SELECT first_name,last_name,distict FROM customer
+INNER JOIN address
+ON customer.address_id=address.address_id</code></pre>
+							<p>The amount column is only found in the payment table, 
+								hence we need to use inner join/join syntax to join the customer and payment 
+								table together. After that, we need to specify where the said columns are being 
+								extracted from (ex. customer.customer_id and payment.amount). Finally, for the HAVING syntax to work we need to write down SUM() to amount>100, 
+								since that was mentioned in the first given line of code.</p>
+							<pre><code>-----Corrected Query 2
+SELECT customer.customer_id,SUM(payment.amount) FROM customer
+join payment
+on customer.customer_id=payment.customer_id
+GROUP BY customer.customer_id
+HAVING sum(amount)>100</code></pre>
+<hr />
+<p></p>
+<p></p>
+							<h3>Task 4</h3>
+							<p>One of the criteria for a customer to become part of the customer
+								loyalty program is that they need to have an accumulated payment
+								made to the DVD rental store of at least $200 or more. As a Data
+								Analyst, you need to provide a list of customer IDs with a total
+								accumulated payment of at least 200 or more. As the data analyst onsite,
+								I was tasked to provide the SQL code and the output.</p>
+							<h5>Query</h5>
+							<pre><code>select customer.customer_id,first_name,last_name,sum(payment.amount)
+from customer
+join payment
+on customer.customer_id=payment.customer_id
+group by customer.customer_id
+having sum(amount)>=200</code></pre>
+							<h5>Output</h5>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-5"><span class="image fit"><img src="images/int3_org.png" alt="" /></span></div>
+						</div>
+					</div>
+			</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+				
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Delivery Data Visualization</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="title">Marina Manaois</a>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="Ind Dlvry.html" class="active">Project</a></li>
+				<li><a href="https://github.com/awkn00dle/DeliveryDataVisualization" target="_blank">Files</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="inner">
+				<h1 class="major">Delivery Data Visualization</h1>
+				<blockquote>
+					<p>This is a Refocus Task. As a data analyst in an Indian delivery company, I have been tasked by
+						top management to create a report on delivery time to
+						compare the company's performance with competitors in Asia. The report will use data from a .csv
+						file that includes information such as delivery time, order date,
+						traffic, weather, location, and other relevant factors. The company delivers various items,
+						including entrees, sides, drinks, desserts, and groceries, using cars, bikes, or motorized
+						scooters, depending on the location.
+						The report will aid in expanding the company's business to other countries in Asia.</p>
+				</blockquote>
+				<span class="image fit"><img src="images/dlvry.png" alt="" /></span>
+				
+				<p></p>
+				<h2>Power BI Dashboard</h2>
+				<p>This dashboard presents key performance indicators, including the longest
+					delivery time, median delivery time, and total number of deliveries as specified by management.
+					These metrics are displayed in number cards that dynamically adjust as users apply various filters
+					available on the left-hand side of the dashboard. The right side of the dashboard features a
+					comparison of average delivery time during different weather conditions and modes of transportation
+					(i.e., motorcycle vs. scooter) to help address the business question of which mode of transportation
+					is more efficient in larger cities where homes and restaurants are closer together. The center of
+					the dashboard features a map of India, showing the total number of deliveries per city type
+					(semi-urban, metropolitan, urban). Additionally, a timeline shows the total number of deliveries
+					over the period of analysis, which can be further filtered by day of the week and month.</p>
+				<p></p>
+				<p></p>
+				<h2>Methodology</h2>
+				<h3>Dataset Review</h3>
+				<span class="image fit"><img src="images/dlvry1.png" alt="" /></span>
+				<p>Upon reviewing the dataset in Excel, I have determined the necessary metrics for the analysis.
+					Utilizing the "ids" column, I will generate a "DeliveryCount" metric, while the order dates will
+					form the basis of a timeseries graph. In order to focus solely on the information related to
+					location, weather, vehicle type, and lead time, I will exclude irrelevant columns such as
+					"Delivery_person_ID", "Delivery_person_Age", and "Delivery_person_Ratings". The "Vehicle_condition"
+					integer and "Festival" binary columns will also be dropped. Additionally, I have identified a range
+					of filters to be incorporated into the dashboard, including "Order Type", "Traffic Density",
+					"Vehicle Type", "Weather Type", "Delivery Type", and "City Type".</p>
+				<h3>Data Processing</h3>
+				<span class="image fit"><img src="images/dlvry2.png" alt="" /></span>
+				<p>From there, the dataset was imported into Power BI and was transformed for data processing or
+					cleaning.
+					This includes simple tasks such as removing duplicates, removing unnecessary columns,
+					replacing blank values as "No Data", and creating buckets. </p>
+				<h3>Data Modeling</h3>
+				<div class="box alt">
+					<div class="row gtr-uniform">
+						<div class="col-10"><span class="image fit"><img src="images/dlvry3.png"
+									alt="" /></span></div>
+					</div>
+					<p></p>
+				<p>For data modeling, a dimension table was created solely for the timeseries. These tables were
+					connected by "Order Date" from the Fact table and "Date" from the Dim Table.
+				<blockquote>These were the formulas used:
+					<li>New Table. Column 1:
+						<code>DimCalendar = CALENDAR(MIN(FACTTable.Column), MAX(FACTTable.Column))</code></li>
+					<li>Column 2: <code>DayOfWeek = FORMAT(DIMTable.Column, "DDDD")</code></li>
+					<li>Column 3: <code>Month = FORMAT(DIMTable.Column, "MMM")</code></li>
+					<li>Column 4: <code>Quarter = "Q"&QUARTER(DIMTable.Column) </code></li>
+					<li>Column 5: <code>Year = YEAR(Table.Column) </code></li>
+				</blockquote>
+				<h3>Dashboard Design</h3>
+				<p>Below shows the visual elements in Power BI and the fields assigned to them.</p>
+				<h4>Layout</h4>
+				<div class="box alt">
+					<div class="row gtr-uniform">
+						<div class="col-8"><span class="image fit"><img src="images/dlvry4.png"
+									alt="" /></span></div>
+					</div>
+					<p></p>
+				<h4>Graphs & Cards</h4>
+				<div class="box alt">
+					<div class="row gtr-uniform">
+						<div class="col-9"><span class="image fit"><img src="images/dlvry5.png"
+									alt="" /></span></div>
+					</div>
+				<p></p>
+				<div class="box alt">
+					<div class="row gtr-uniform">
+						<div class="col-9"><span class="image fit"><img src="images/dlvry6.png"
+									alt="" /></span></div>
+					</div>
+				<p></p>
+				<h4>Filters</h4>
+				<div class="box alt">
+					<div class="row gtr-uniform">
+						<div class="col-9"><span class="image fit"><img src="images/dlvry7.png"
+									alt="" /></span></div>
+					</div>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer" class="wrapper alt">
+		<div class="inner">
+			<ul class="menu">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Yellevate - Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Marina Manaois</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="Yellevate.html" class="active">Project</a></li>
+						<li><a href="https://github.com/awkn00dle/YellevateBusinessAnalysis" target="_blank">Files</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Yellevate Business Analysis</h1>
+							<blockquote>This is a Refocus Project that involves team effort to evaluate a client's dissatisfaction with company services using tools such as SQL and Excel. By the end of the case study, the group provided a comprehensive visual report, along with recommended actions for resolution.</blockquote>
+							<h2>Summary</h2>
+							<p>Yellevate, a marketing services company, has struggled with client disputes resulting in a 5% annual loss of revenue. The team of data analysts conducted statistical analysis and data visualization and found that Yellevate is losing more disputes in France than any other country, accounting for 76% of revenue lost in 2 years. The team recommended that Yellevate investigate and eliminate operational issues in the department that handles invoices and transactions in France, create a tracking system for customer rating and credit standing, and communicate with clients to identify reasons for disputes and complaints. Implementing these strategies can address the root causes of disputes, improve customer service, and ultimately increase revenue and customer satisfaction for Yellevate.</p>
+							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+							<h2>Background</h2>
+							<p>The company Yellevate specializes in providing marketing services to other
+								companies. Yellevate helps mid-sized companies to launch their marketing operations
+								which includes things like email marketing, website development, content creation and
+								others.
+								Yellevate uses data analytics to keep track of how well it helps companies
+								improve their marketing operations. For instance, if a company approaches Yellevate to
+								help improve its online advertising operations, Yellevate tracks this by looking at email
+								impressions, click-through rates, website traffic and other key performance indicators.</p>
+							<p>However, Yellevate has been facing a significant financial burden due to client disputes where nearly 20% of disputes have resulted in a payment opt-out, causing an estimated 5% annual loss of revenue. 
+								The management has assigned a team to analyze the data collected about these disputes and identify their root causes. 
+								The team is expected to develop actionable strategies to solve the issue.</p>
+							<p></p>
+							<p></p>
+							<h2>Objectives</h2>
+							<p>The team had access to a dataset containing information on customer disputes, including invoice numbers, dollar values, and the time it took to settle disputes. With this data, the group established team objectives for their analysis:</p>
+								<li>Understand how long the processing time to settle invoices for all clients</li>
+								<li>Determine processing time to settle all disputes among clients in all regions</li>
+								<li>Identify the region where most disputes are coming from and how huge the number is compared to other clients</li>
+								<li>Determine how much revenue is lost from disputes in 2020-2021</li>
+								<li>Determine how much revenue is being lost and from which country most of the revenue lost is coming from</li>
+							<p></p>
+							<p></p>
+							<h2>Methodology</h2>
+							<h3>Import</h3>
+							<p>First step was to create a database in PgAdmin 4 using PostgreSqL and create a new table named "yellevate_invoices". Then the provided csv file was imported into pgadmin and into the table just created.
+								Finally, a query was made to check the dataset.</p>
+								<img src="images/sql_3.png">
+								<img src="images/sql_7.3.png">
+								<img src="images/sql pic 2.png">
+							<p></p>
+							<h3>Process</h3>
+							<p>To prepare the dataset for Excel, a new table was created which will include two (2)
+								new columns named: "disputes" and "revenue". This is to help in the process of
+								creating data visualization in Excel.</p>
+							<img src="images/sql_10.png">
+							<img src="images/sql_11.1.png">
+							<p></p>
+							<h3>Analyze</h3>
+							<p>Before transferring our processed dataset to Excel, we initiate our data analysis
+								by writing a subquery to answer all our questions related to our team objectives. Questions 1-4 were answered in one line of
+								code while Question 5 was done separately. Afterwhich, the results were saved into a .csv file.</p>
+								<blockquote> <ol>
+									<li>What is the average processing time to settle invoices?</li>
+									<li>What is the average processing time to settle disputed invoices?</li>
+									<li>What is the percentage of disputes received by the company that were lost?</li>
+									<li>What is the percentage of revenue lost by disputes?</li>
+									<li>Which country had the highest revenue losses from lost disputes?</li></ol> </blockquote>
+							<img src="images/sql_12.png">
+							<img src="images/sql_13.png">
+							<p></p>
+							<h3>Visualize</h3>
+							<p>After opening the csv file through Excel, we saved the file as an Excel Workbook
+								and proceeded in creating pivot tables and graphs. Below is a sample of our file.</p>
+								<img src="images/sql_15.png">
+							<h2>Results</h2>
+							<span class="image fit"><img src="images/exl.png" alt="" /></span>
+							<p></p>
+							<p></p>
+							<h2>Insights</h2>
+							<span class="image fit"><img src="images/exl_Ins1.png" alt="" /></span>
+							<p></p>
+							<span class="image fit"><img src="images/exl_Ins2.png" alt="" /></span>
+							<p></p>
+							<span class="image fit"><img src="images/exl_Ins3.png" alt="" /></span>
+							<p></p>
+							<span class="image fit"><img src="images/exl_Ins4.png" alt="" /></span>
+							<p></p>
+							<span class="image fit"><img src="images/exl_Ins5.png" alt="" /></span>
+							<p></p>
+							<p></p>
+							<h2>Additional Findings</h2>
+							<img src="images/exl_Add.png">
+							<p></p>
+							<p></p>
+							<p></p>
+							<h2>Recommendations</h2>
+							<h4>Bill Disputes</h4>
+							<li>Yellevate should investigate, classify, and deduce the root causes of disputes
+								starting in France. Since the dataset doesn't have the reasons about the
+								disputes, we recommend Yellevate should start collecting this data moving
+								forward.</li>
+							<li>Conduct audit or investigation particularly to the department that handles
+								invoices and other transactions to determine and eliminate operational issues
+								connected to dispute losses.</li>
+							<li>Immediate review of the contract and take
+								necessary action focusing on the top 5 customers with more than 30% of lost
+								revenue because of client disputes.</li>
+								<p></p>
+							<h4>Lost Disputes and Opt-out</h4>
+							<li>By focusing more on France, Yellevate should review the terms of the contracts offered in this
+								region to find out the reasons why opt-out was authorized.</li>
+							<li>Compare best practices in handling disputes across all markets: What are these
+								markets doing to keep lost disputes low.</li>
+								<p></p>
+							<h4>Billing Process and Credit & Collection</h4>
+							<li>Determine when customers get the bill: The 30-day grace period starts when the invoice
+								is generated. Send a statement of account to the client every end of the billing period.</li>
+							<li>Determine when to bill a customer: When do customers get billed? After a project, a
+								fixed date every month?</li>
+							<li>Determine how customers pay the bill: Increase number in payment channels if
+								applicable.</li>
+							<li>Establish credit lines and credit limits: if a customer has outstanding balances services
+								should be stopped. Limit the adding of invoices/projects until a dispute has been settled.
+								Lessening overlapping open disputes.</li>
+								<p></p>
+							<h4>Client Relations and Account Management</h4>
+							<li>Yellevate should be more engaging for the clients in France, improving communication
+								should help the company understand why clients in France are disputing the services
+								offered in this region.</li>
+							<li>Yellevate should also consider checking the market in France to see if
+								competitors offering the same services is a challenge in the region, execute
+								mitigation plan to solve the problem.</li>
+							<li>Communication is the key. Build performance assessment forms for every
+								service rendered by Yellevate to its client. This form should be attached to the
+								invoice as a supporting document and proof that the client is satisfied with the
+								service provided to them by Yellevate. It will also reduce claims of disputes from
+								clients.</li>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

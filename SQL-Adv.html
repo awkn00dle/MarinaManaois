@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Advanced SQL - Marina Manaois</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Hyperspace</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="SQL-Basic.html">Basic</a></li>
+						<li><a href="SQL-Int.html" >Intermediate</a></li>
+						<li><a href="SQL-Adv.html" class="active">Advanced</a></li>
+						<li><a href="https://github.com/awkn00dle/SQLTasks/tree/ea8eb47f7bd4add3edcac291122708a37a4d8969" target="_blank" >Files</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Advanced SQL Queries</h1>
+							<blockquote>file: dvdrental.tar</blockquote>
+							<h3>Task 1</h3>
+							<p>Manager asked me to provide the syntactically correct SQL statement for creating a new column titled "title_description".</p>
+							<h3>Query</h3>
+							<pre><code>SELECT CONCAT(title,'-',description) AS title_description FROM film
+</code></pre>
+<p></p>
+<p></p>
+<hr />						
+							<h3>Task 2</h3>
+							<p>A fellow data analyst couldn't understand how the following SQL queries were not working 
+								in the database.
+								I was asked to provide a brief explanation and the corrected syntax.</p>
+							<pre><code>select title,rental_rate,
+case 
+when rental_rate > 2 then ‘Expensive
+when rental_rate = 2 then ‘Average’
+when rental_rate < 2 then ‘Cheap’
+from film</code></pre>
+							<h3>Comments & Syntax</h3>
+							<p>It won’t work because there was a lack of the end-statement to end the case (ex. end as length_analysis).</p>
+							<pre><code>select title,rental_rate,
+case 
+	when rental_rate > 2 then 'Expensive'
+	when rental_rate = 2 then 'Average'
+	when rental_rate < 2 then 'Cheap'
+end as length_analysis
+from film</code></pre>
+<p></p>
+<p></p>
+<hr />		
+							<h3>Task 3</h3>
+							<p>The store supervisor wants to check the performance of the two
+								staff that they have by checking all the payments that the staff
+								processed. The supervisor established a quota of 25,000 for all the
+								payments processed by the staff and would like to see a report
+								showing the total payment amount processed by each staff and a
+								column saying whether they met or did not meet the quota. 
+								Manager debriefed me the store supervisor's request and tasked me to provide a query and output.</p>
+							<pre><code>select staff_id, sum(amount),
+case
+	when sum(amount) = 25000 then 'Quota Met'
+	when sum(amount) > 25000 then 'Quota Met'
+	when sum(amount) < 25000 then 'Quota Unmet'
+end as quota_rating
+from payment
+group by staff_id
+order by staff_id asc
+</code></pre>
+							<h3>Output</h3>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+							<div class="col-5"><span class="image fit"><img src="images/adv1_org.png" alt="" /></span></div>
+						</div>
+					</div>
+			</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+				
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

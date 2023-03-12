@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>eCommerce Data Visualization - Marina Manaois</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="title">Marina Manaois</a>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="Olist.html" class="active">Project</a></li>
+				<li><a href="https://github.com/awkn00dle/eCommerceDataVisualization" target="_blank">Files</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="inner">
+				<h1 class="major">Olist eCommerce Data Visualization</h1>
+				<blockquote>This is a Refocus Final Task. As a data analyst consultant for an e-commerce company in
+					Brazil, I have
+					been tasked with analyzing their operational performance using a dataset of 100,000 orders from
+					various marketplaces between 2016 and 2018. The report I am required to produce will consist of
+					three main parts: a general dashboard, delivery performance, and product quality. The dataset
+					contains information on customer location, product attributes, order status, price, payment, and
+					freight performance. Additionally, customer reviews and a geolocation dataset linking Brazilian zip
+					codes to latitude/longitude coordinates are available. The report's findings will influence the
+					company's management decisions regarding future business development. The dataset is commercially
+					sensitive and has been anonymized.</blockquote>
+				<h3>General Dashboard</h3>
+				<div class="box alt">
+					<div class="row gtr-uniform">
+						<div class="col-9"><span class="image fit"><img src="images/olist-gen.png" alt="" /></span>
+						</div>
+					</div>
+					<p></p>
+					<h3>Delivery Performance Dashboard</h3>
+					<div class="box alt">
+						<div class="row gtr-uniform">
+							<div class="col-9"><span class="image fit"><img src="images/olist-del.png" alt="" /></span>
+							</div>
+						</div>
+						<p></p>
+						<h3>Product Quality Dashboard</h3>
+						<div class="box alt">
+							<div class="row gtr-uniform">
+								<div class="col-9"><span class="image fit"><img src="images/olist-prod.png"
+											alt="" /></span></div>
+							</div>
+							<p></p>
+							<p></p>
+							<p></p>
+							<h2>Business Objectives</h2>
+							<p>The general dashboard will be established after the business metrics of delivery
+								performance and product quality are planned out. The following bullet points and its
+								sequence are part of my thought process before creating the dashboards:</p>
+							<h4>Delivery Performance</h4>
+							<li>Analyzing the Order Lead Time (OLT), we can identify
+								if the
+								e-commerce platform is meeting customer expectations of timely delivery. A longer
+								OLT may lead to customer dissatisfaction and impact customer loyalty. </li>
+							<li>Analyzing the Carrier Delivery Time (CDT), we can identify if the carriers are
+								delivering the orders
+								within the expected time frame. A longer CDT may indicate inefficiencies in the
+								carrier's delivery processes and may require attention.</li>
+							<li>Comparing the OLT and Estimated Delivery Time (EDT), we can identify if the
+								e-commerce platform is
+								delivering the orders as per the promised delivery timeline. A longer OLT than EDT
+								may indicate delivery delays and require corrective actions.</li>
+							<p></p>
+							<blockquote>
+								Key metrics: <li>Average freight cost per order</li>
+								<li>Total Orders or Deliveries</li>
+								<li>Average delivery/processing time</li>
+								<li>Average Customer Delivery Time</li>
+								<li>Average Courier Delivery Time</li>
+							</blockquote>
+							<h4>Product Quality</h4>
+							<li>Product ratings and reviews provide valuable feedback on customer satisfaction and
+								quality. High ratings and positive reviews indicate quality products while low ratings
+								and negative reviews highlight areas for improvement. Monitor and take action to address
+								customer feedback.</li>
+							<li>Monitoring product popularity and demand helps understand which products are most
+								popular with customers, informing inventory management and development decisions.
+								Popular products may require additional production or inventory while less popular
+								products may need reevaluation to better meet customer preferences.</li>
+							<li>Monitoring the average price of products helps to understand competitor pricing and
+								ensure competitiveness. Balance pricing with quality and customer demand to offer
+								products at a reasonable price point. Investigate the relationship between product price
+								and quality, identifying opportunities to improve quality without significant price
+								increases.</li>
+							<p> </p>
+							<blockquote> Key metrics
+								<li>Total Number of Products</li>
+								<li>Total Revenue</li>
+								<li>Average Price per Order</li>
+								<li>Average Review Rating</li>
+								<li>No. of Orders that rated 4-5 stars</li>
+								<li>No. of Orders that rated 1-3 stars</li>
+							</blockquote>
+							<h4>General Dashboard</h4>
+							Key metrics
+							<li>Total revenue</li>
+							<li>Total revenue generated over time</li>
+							<li>Number of orders</li>
+							<li>Number of orders placed and fulfilled</li>
+							<li>Average order value Average value of each order</li>
+							<li>Number of customers and their distribution across different regions</li>
+							<li>Sales by product categories Sales distribution by product categories</li>
+							<li>Sales by sellers</li>
+							<li>Sales distribution by sellers</li>
+							<li>Review scores Average review scores and sentiments</li>
+							<p></p>
+							<h2>Methodology</h2>
+							<h3>Data Cleaning & Processing</h3>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+									<div class="col-5"><span class="image fit"><img src="images/olist5.png"
+												alt="" /></span></div>
+								</div>
+								<p></p>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-10"><span class="image fit"><img src="images/olist6.png"
+													alt="" /></span></div>
+									</div>
+									<p></p>
+									<p>There are nine (9) datasets. Above is a sample of only the Fact Table which is
+										titled "olist_orders_dataset".
+										Upon reviewing the dataset in Excel, I have determined the necessary metrics for
+										the analysis. Utilizing the "ids" column, I will generate a "OrderCount"
+										metric, while the order dates will form the basis of a timeseries graph for the
+										delivery dashboard. Almost all the columns were used in this project. However,
+										the usual data cleaning such as removing duplicate rows, replace null to "No
+										Data", promoting headers, adding measures (ex. Order Lead Time and Dates), and
+										creating buckets were done as part of the processing of data. I also renamed the
+										Dimension Tables and Fact Tables accordingly for easy data modeling.</p>
+									<h3>Data Modeling</h3>
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-7"><span class="image fit"><img src="images/olist8.png"
+														alt="" /></span></div>
+										</div>
+										<p></p>
+										<p>Above shows the data modeling schema I used, which is called a snowflake
+											schema. I used Many-To-One for all entity-relationship diagrams (ERD). </p>
+										<p></p>
+										<h3>Dashboard Design</h3>
+										<p>Below shows the visual elements in Power BI and the fields assigned to them.
+										</p>
+										<h4>Layout</h4>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-7"><span class="image fit"><img src="images/olist1.png"
+															alt="" /></span></div>
+											</div>
+											<p></p>
+											<h4>Graphs & Cards</h4>
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-8"><span class="image fit"><img
+																src="images/olist2.png" alt="" /></span></div>
+												</div>
+												<p></p>
+												<div class="box alt">
+													<div class="row gtr-uniform">
+														<div class="col-8"><span class="image fit"><img
+																	src="images/olist3.png" alt="" /></span></div>
+													</div>
+													<p></p>
+													<h4>Filters</h4>
+													<div class="box alt">
+														<div class="row gtr-uniform">
+															<div class="col-7"><span class="image fit"><img
+																		src="images/olist4.png" alt="" /></span></div>
+														</div>
+													</div>
+		</section>
+
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer" class="wrapper alt">
+		<div class="inner">
+			<ul class="menu">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
