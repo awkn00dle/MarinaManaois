@@ -25,7 +25,7 @@
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li><a href="PrjMan - Excel.html" class="active">Project</a></li>
-				<li><a href="https://github.com/awkn00dle/ProjectManagementReport" target="_blank">Files</a></li>
+				<li><a href="https://github.com/marinaascmanaois/ProjectManagementReport" target="_blank">Files</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -43,7 +43,7 @@
 					insights into individual contributions. Moreover, tmarnahhhe information
 					in this project is dummy data and are used solely to showcase a sample of the report.</p></blockquote>
 					<p></p>
-				<span class="image fit"><img src="images/prjman.png" alt="" /></span>
+				<span class="image fit"><img src="./images/prjman.png" alt="" /></span>
 				<h2>Excel Interactive Dashboard</h2>
 				<p>This project management report created in Excel features an interactive dashboard with four distinct
 					components. The first part includes a set of number tiles
@@ -59,7 +59,7 @@
 					projects and make informed decisions.</p>
 				<h2>Methodology</h2>
 				<h3>Pivot Table</h3>
-				<span class="image fit"><img src="images/prjman-piv.png" alt="" /></span>
+				<span class="image fit"><img src="./images/prjman-piv.png" alt="" /></span>
 				<p>Created a pivot table that involved connecting the "teams" and "activities" reference tables through
 					the "persons" column.
 					Start and end dates were added as minimum and maximum values,
@@ -67,7 +67,7 @@
 					The end result was a table that displayed activity numbers, individual start and end dates, and
 					categories.</p>
 				<h3>Gantt Chart</h3>
-				<span class="image fit"><img src="images/prjman-gant.png" alt="" /></span>
+				<span class="image fit"><img src="./images/prjman-gant.png" alt="" /></span>
 				<p>To create the Gantt chart, the prepared pivot table was linked to a vertical axis on a separate
 					sheet.
 					Progress percentages were converted to progress bars using conditional formatting,
@@ -79,7 +79,7 @@
 					are on schedule.</p>
 				<h3>Progress Charts</h3>
 				<h4>Upcoming Chart</h4>
-				<span class="image fit"><img src="images/prjman-upc.png" alt="" /></span>
+				<span class="image fit"><img src="./images/prjman-upc.png" alt="" /></span>
 				<p>To create the "Upcoming Chart", two tables were first created for the top 10 ongoing activities and
 					top 10 pending issues on the calculations sheet.
 					These tables were then used to generate a dashboard display table that could switch between the list
@@ -95,13 +95,13 @@
 						<code>=INDEX(FILTER(Issue,Issue[Date opened]>today.date),SEQUENCE(10),{1,2,4})</code></li>
 				</blockquote>
 				<h4>People Chart</h4>
-				<span class="image fit"><img src="images/prjman-ppl.png" alt="" /></span>
+				<span class="image fit"><img src="./images/prjman-ppl.png" alt="" /></span>
 				<p>To create "People Chart", the linking of the "Activity" and "People" tables was made by using the
 					relationship option.
 					A pivot table was created to count "Assigned To" for activities and "Owner" for issues.
 					Data bars were added via conditional formatting, and the table was copied to the dashboard.</p>
 				<h3>Dashboard with Filters</h3>
-				<span class="image fit"><img src="images/prjman-slcr.png" alt="" /></span>
+				<span class="image fit"><img src="./images/prjman-slcr.png" alt="" /></span>
 				<p>To create an interactive dashboard, two filters were added: a drop-down for the Upcoming Chart and a
 					slicer for the Gantt Chart.
 					A combo box was inserted using the developer's tab and linked to a calculation sheet with the two
@@ -112,7 +112,7 @@
 					The slicer was then linked to the dashboard,
 					allowing for easy filtering of the Gantt Chart.</p>
 				<h3>Dashboard with Number Cards</h3>
-				<span class="image fit"><img src="images/prjman-crds.png" alt="" /></span>
+				<span class="image fit"><img src="./images/prjman-crds.png" alt="" /></span>
 				<p>Creating number cards for a dashboard involves setting up a new table in the calculations sheet with
 					formulas to calculate days left for projects, pending activities, and issues.
 					Cards were designed, labeled,
