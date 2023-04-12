@@ -1,0 +1,314 @@
+<!-- <!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Clockster HR Analytics - Marina Manaois</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="title">Marina Manaois</a>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="Clockster.html" class="active">Project</a></li>
+				<li><a href="https://github.com/marinaascmanaois/ClocksterHRAnalytics" target="_blank">Files</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<section id="main" class="wrapper">
+			<div class="inner">
+				<h1 class="major">Clockster HR Analytics</h1>
+				<blockquote>This is a Refocus Project that involves team effort to analyze HR data as
+					requested by a stakeholder using tools, such as Excel, SQL, and Power BI. By the end of the case
+					study, the group
+					created an interactive dashboard and video presentation report to answer business questions.
+				</blockquote>
+				<h2>Summary</h2>
+				<p>The HR department of a medical company tasked a data analyst team with identifying the most
+					disciplined and undisciplined employees and departments, analyzing the reasons for employee absence
+					and tardiness, and determining which heads of departments tend to forgive employee lack of
+					discipline. Inconsistent data formatting required pre-cleaning of CSV files in MS Excel before
+					importing them into PostgreSQL. Data cleaning involved replacing empty values, unnesting arrays, and
+					removing duplicates. Data was then imported into Power BI for further processing and analysis.
+					Recommendations included implementing clearer tardiness and sanction policies, creating a reward
+					system for punctual employees, and improving data gathering by adding more data points and
+					undertaking further analysis to identify specific problem areas.
+				</p>
+				<span class="image fit"><img src="./images/clck-main.jpg" alt="" /></span>
+				<h2>Background</h2>
+				<p>I was part of a data analyst team for the HR department in a medical company.
+					The data provided by the HR department includes 10-15 parameters per day per year
+					(arrival/departure time, vacations, sick days, time off, etc) on 1000+ employees of the
+					company. The group needed to do the following tasks, which the CEO requested: identify the most
+					disciplined and undisciplined employees and divisions, create a visualization with the analysis of
+					weekdays and months when the most employees were late/absent (either for vacation or sick leave),
+					and answer the following
+					questions: Which heads of departments tend to forgive employees for lack of discipline? Are there
+					any favorites for any heads of
+					departments (perhaps some employees are always forgiven for being late, given
+					time off, etc.)?</p>
+				<p></p>
+				<p></p>
+				<h2>Objectives</h2>
+				<p>The team had access to a dataset containing information on employee attendance, leave requests,
+					payroll, schedules, and employee information. With this data, the group
+					established team objectives for the analysis on employee attendance and leaves:</p>
+				<li>Find out who are the most disciplined and undisciplined employees and divisions.</li>
+				<li>Pinpoint which weekdays and months that has the most leaves and absences.</li>
+				<li>Investigate whether there are favorites within the departments.</li>
+				<p></p>
+				<p></p>
+				<h2>Methodology</h2>
+				<h3>Pre-Cleaning</h3>
+				<p>Upon inspection of dataset, it was noticed that some of these cannot be directly imported to
+					PostgreSQL due to
+					inconsistencies in data formatting, specifically the array within some of the columns.
+					MS Excel was used to perform pre-cleaning of CSV files by changing array square brackets to curly
+					braces.</p>
+				<div class="box alt">
+					<div class="row gtr-uniform">
+						<div class="col-9"><span class="image fit"><img src="./images/clck1.png" alt="" /></span>
+						</div>
+					</div>
+					<p></p>
+					<div class="box alt">
+						<div class="row gtr-uniform">
+							<div class="col-9"><span class="image fit"><img src="./images/clck2.png" alt="" /></span>
+							</div>
+						</div>
+						<p></p>
+						<h3>Data Cleaning</h3>
+						<p>After importing the dataset in PostgreSQL, each table were made a copy or backup in case
+							errors or mistakes were to occur. The data was then cleaned by replacing empty values to
+							with “not specified”, unnesting those with arrays, and removing duplicated rows.</p>
+
+						<p>As a sample, these are some of the SQL scripts for data cleaning. To view all scripts in
+							detail you may visit this link: <i><a
+									href="https://github.com/marinaascmanaois/ClocksterHRAnalytics/tree/main/Clockster_SQL%20Codes"
+									target="_blank">clockster_sql</a></i> </p>
+						<div class="box alt">
+							<div class="row gtr-uniform">
+								<div class="col-4"><span class="image fit"><img src="./images/clck3.png"
+											alt="" /></span>
+								</div>
+							</div>
+							<p>Importing data to PostgreSQL</p>
+							<p></p>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+									<div class="col-6"><span class="image fit"><img src="./images/clck4.png"
+												alt="" /></span>
+									</div>
+								</div>
+								<p>Changing null values</p>
+								<p></p>
+								<h3>Analyze</h3>
+								<p>The datasets were imported into Power BI where further data processing was made, like
+									merging attendance and schedule tables and removed outliers. Data analysis was
+									initiated once calculations with DAX metrics (Add Column) were made. A dimenstion
+									calendar table was also made with the use of MIN and MAX on
+									attendance_schedule merged table.</p>
+								<blockquote>Below are some DAX column measures:
+									<li>is_disciplined <code>= IF([is_undertime_or_late] = 0, 1, 0)</code></li>
+									<li>is_late
+										<code>= IF([case] = "IN", IF([undertime_duration_minute] > 10, 1, 0), 0)</code>
+									</li>
+									<li>is_undertime
+										<code>= IF([case] = "OUT", IF([undertime_duration_minute] > 0, 1, 0), 0)</code>
+									</li>
+									<li>late_duration_hour
+										<code>= IF([case] = "IN", DATEDIFF([schedules.time_start], [time], HOUR), 0)</code>
+									</li>
+								</blockquote>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-2.5"><span class="image fit"><img src="./images/clck5.png"
+													alt="" /></span>
+										</div>
+									</div>
+									<p></p>
+									<h3>Data Modeling</h3>
+									<p>Below shows the data modeling schema I used, which is called a snowflake
+										schema. I used Many-To-One for all entity-relationship diagrams (ERD). </p>
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-7"><span class="image fit"><img src="./images/clck6.png"
+														alt="" /></span>
+											</div>
+										</div>
+										<p></p>
+										<h3>Visualize</h3>
+										<p>Below shows the layout we designed and tooltips for additional insights.</p>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-5"><span class="image fit"><img src="./images/clck7.png"
+															alt="" /></span>
+												</div>
+											</div>
+											<p></p>
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-12"><span class="image fit"><img
+																src="./images/clck8.png" alt="" /></span>
+													</div>
+												</div>
+												<p></p>
+												<p></p>
+												<h2>Results</h2>
+												<span class="image fit"><img src="./images/clck10.png" alt="" /></span>
+												<span class="image fit"><img src="./images/clck11.png" alt="" /></span>
+												<span class="image fit"><img src="./images/clck12.png" alt="" /></span>
+												<p></p>
+												<p></p>
+												<h2>Insights</h2>
+												<i>Note: The term “undertime” in this report means both late and
+													undertime</i>
+												<div class="box alt">
+													<div class="row gtr-uniform">
+														<div class="col-8"><span class="image fit"><img
+																	src="./images/clck13.png" alt="" /></span>
+														</div>
+													</div>
+													<p></p>
+													<div class="box alt">
+														<div class="row gtr-uniform">
+															<div class="col-8"><span class="image fit"><img
+																		src="./images/clck14.png" alt="" /></span>
+															</div>
+														</div>
+														<p></p>
+														<div class="box alt">
+															<div class="row gtr-uniform">
+																<div class="col-8"><span class="image fit"><img
+																			src="./images/clck15.png" alt="" /></span>
+																</div>
+															</div>
+															<p></p>
+															<div class="box alt">
+																<div class="row gtr-uniform">
+																	<div class="col-8"><span class="image fit"><img
+																				src="./images/clck16.png"
+																				alt="" /></span>
+																	</div>
+																</div>
+																<p></p>
+																<p></p>
+																<p></p>
+																<h2>Recommendations</h2>
+																<h4>Establish clearer tardiness policies for full-time
+																	employees
+																</h4>
+																<li>Attendance policy is needed in an organization when
+																	frequent employee
+																	absences and tardiness are causing disturbance in
+																	the business. </li>
+																<li>To deal with employee issues, time and attendance
+																	policy is needed.</li>
+
+																<p></p>
+																<h4>Create a sanction policy for undisciplined employees
+																</h4>
+																<li>Effective working in an organization depends on the
+																	punctuality, sincerity, and
+																	regular working of the employees, and to a certain
+																	extent on employee
+																	attendance.</li>
+																<li>It is necessary to lay down rules and regulations
+																	which are followed within the
+																	organization to maintain regularity.</li>
+																<li>Point system is one of the ways to keep control of
+																	discipline related to employee
+																	attendance and to communicate that an absence cannot
+																	be taken casually and
+																	regular absence or tardiness or absenteeism will be
+																	dealt with strict disciplinary
+																	action.</li>
+																<li>It is recommended that unauthorized absences should
+																	be handled with a
+																	succession of warning, which, if ignored may result
+																	in a disciplinary hearing.</li>
+																<li>If the employee continues unauthorized absence, it
+																	is a gross misconduct, then
+																	the employee may be dismissed for that.</li>
+																<p></p>
+																<h4>Reward system for consistently punctual employees
+																</h4>
+																<li>Recognizing employees for good attendance and
+																	performance can be one of the
+																	lowest cost, yet highest impact strategies for your
+																	business.
+																</li>
+																<li>Find a way to call out and reward good attendance on
+																	a regular basis. </li>
+																<li>Incentivize rewards with good attendance record. An
+																	idea could be offering
+																	rewards they would not want to miss, like an extra
+																	day off or a chance to choose
+																	their own schedule for a week.</li>
+																<p></p>
+																<h4>Improve data gathering</h4>
+																<li>Add data points on leave requests, e.g., reasons for
+																	granting compensatory
+																	leave.</li>
+																<li>For those who clocked in late, collect the reasons
+																	for their tardiness.</li>
+																<li>Create a separate data collection system for
+																	freelancers and full-time workers.</li>
+																<li>Collect data on whether they gave sanctions to
+																	undisciplined employees.</li>
+																<li>Research the issue by undertaking a historical study
+																	to ascertain the extent of
+																	the attendance problem and whether it is improving
+																	or worsening. </li>
+																<li>Further analysis can help pinpoint specific problem
+																	areas, such as geographic
+																	locations, departments or divisions experiencing
+																	higher-than-usual absence
+																	rates.</li>
+															</div>
+		</section>
+
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer" class="wrapper alt">
+		<div class="inner">
+			<ul class="menu">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html> -->
